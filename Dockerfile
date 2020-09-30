@@ -9,8 +9,8 @@ RUN curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}" | bash - \
 RUN apt-get install --no-install-recommends -y \
       unixodbc-dev=2.3.4-1
 
-COPY src/server/static/package*.json /piaf/app/server/static/
-RUN cd /piaf/app/server/static \
+COPY src/server/static/package*.json src/piaf/app/server/static/
+RUN cd src/piaf/app/server/static \
  && npm ci
 
 COPY requirements.txt /
