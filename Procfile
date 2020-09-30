@@ -1,1 +1,3 @@
-web: src/manage.py runserver
+web: python src/manage.py migrate
+web: python src/manage.py runserver
+    
