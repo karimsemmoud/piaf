@@ -4,7 +4,7 @@ FROM python:${PYTHON_VERSION}-stretch AS builder
 ARG NODE_VERSION="10.x"
 RUN curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}" | bash - \
  && apt-get install --no-install-recommends -y \
-      nodejs=8.16.0-1nodesource1
+      nodejs
 
 RUN apt-get install --no-install-recommends -y \
       unixodbc-dev=2.3.4-1
