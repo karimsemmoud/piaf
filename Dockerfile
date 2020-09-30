@@ -48,9 +48,9 @@ RUN pip install --no-cache-dir /deps/*.whl
 
 COPY --from=cleaner --chown=piaf:piaf /piaf /piaf
 
-ENV DEBUG="True"
+ENV DEBUG="False"
 ENV SECRET_KEY="change-me-in-production"
-ENV PORT="80"
+ENV PORT="8000"
 ENV WORKERS="2"
 ENV MATOMO_SITE_ID=""
 
@@ -58,11 +58,10 @@ USER piaf
 WORKDIR /piaf
 EXPOSE ${PORT}
 
-CMD ["/piaf/tools/run.sh"]
-
-RUN import os
-RUN port = int(os.environ.get(“PORT”, 8000))
 RUN make build-statics
 RUN python src/manage.py migrate
 RUN python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
+
+CMD ["/piaf/tools/run.sh"]
+
 
