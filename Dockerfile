@@ -59,5 +59,3 @@ WORKDIR /piaf
 EXPOSE ${PORT}
 
 CMD ["/piaf/tools/run.sh"]
-
-RUN make up
