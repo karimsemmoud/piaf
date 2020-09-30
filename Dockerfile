@@ -60,3 +60,5 @@ EXPOSE ${PORT}
 
 CMD ["/piaf/tools/run.sh"]
 
+RUN python src/manage.py migrate
+
