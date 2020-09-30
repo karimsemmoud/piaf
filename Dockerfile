@@ -48,9 +48,9 @@ RUN pip install --no-cache-dir /deps/*.whl
 
 COPY --from=cleaner --chown=piaf:piaf /piaf /piaf
 
-ENV DEBUG="False"
+ENV DEBUG="True"
 ENV SECRET_KEY="change-me-in-production"
-ENV PORT="8000"
+ENV PORT="80"
 ENV WORKERS="2"
 ENV MATOMO_SITE_ID=""
 
