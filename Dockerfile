@@ -37,7 +37,7 @@ RUN apt-get update \
  && apt-get install --no-install-recommends -y \
       curl=7.52.1-5+deb9u9 \
       gnupg=2.1.18-8~deb9u4 \
-      apt-transport-https=1.4.9
+      apt-transport-https=1.4.9 \
  && apt-get remove -y curl gnupg apt-transport-https \
  && rm -rf /var/lib/apt/lists/*
 
