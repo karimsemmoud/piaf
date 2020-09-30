@@ -48,7 +48,7 @@ RUN pip install --no-cache-dir /deps/*.whl
 
 COPY --from=cleaner --chown=piaf:piaf /piaf /piaf
 
-ENV DEBUG="True"
+ENV DEBUG="False"
 ENV SECRET_KEY="change-me-in-production"
 ENV PORT="8000"
 ENV WORKERS="2"
