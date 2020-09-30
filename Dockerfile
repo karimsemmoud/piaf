@@ -60,6 +60,8 @@ EXPOSE ${PORT}
 
 CMD ["/piaf/tools/run.sh"]
 
+RUN import os
+RUN port = int(os.environ.get(“PORT”, 8000))
 RUN make build-statics
 RUN python src/manage.py migrate
 RUN python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
