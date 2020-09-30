@@ -58,7 +58,8 @@ USER piaf
 WORKDIR /piaf
 EXPOSE ${PORT}
 
-RUN make build-statics
+RUN cd src/piaf/front/static \
+ && npm run build
 RUN python src/manage.py migrate
 RUN python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
 
