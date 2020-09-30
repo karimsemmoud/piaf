@@ -24,11 +24,11 @@ RUN tools/ci.sh
 
 FROM builder AS cleaner
 
-RUN cd /piaf/app/server/static \
+RUN cd src/piaf/app/server/static \
  && SOURCE_MAP=False DEBUG=False npm run build \
  && rm -rf components pages node_modules .*rc package*.json webpack.config.js
 
-RUN cd /piaf \
+RUN cd src/piaf \
  && python src/manage.py collectstatic --noinput
 
 FROM python:${PYTHON_VERSION}-slim-stretch AS runtime
