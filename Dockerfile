@@ -65,4 +65,4 @@ EXPOSE ${PORT}
 CMD ["/piaf/tools/run.sh"]
 
 RUN python src/manage.py migrate
-RUN python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
+RUN python src/manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
