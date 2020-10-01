@@ -9,8 +9,8 @@ RUN curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}" | bash - \
 RUN apt-get install --no-install-recommends -y \
       unixodbc-dev=2.3.4-1
 
-COPY src/server/static/package*.json src/piaf/app/server/static/
-RUN cd src/piaf/app/server/static \
+COPY src/server/static/package*.json /piaf/app/server/static/
+RUN cd /piaf/app/server/static \
  && npm ci
 
 COPY requirements.txt /
@@ -24,11 +24,11 @@ RUN tools/ci.sh
 
 FROM builder AS cleaner
 
-RUN cd src/piaf/app/server/static \
+RUN cd /piaf/app/server/static \
  && SOURCE_MAP=False DEBUG=False npm run build \
  && rm -rf components pages node_modules .*rc package*.json webpack.config.js
 
-RUN cd src/piaf \
+RUN cd /piaf \
  && python src/manage.py collectstatic --noinput
 
 FROM python:${PYTHON_VERSION}-slim-stretch AS runtime
@@ -48,7 +48,7 @@ RUN pip install --no-cache-dir /deps/*.whl
 
 COPY --from=cleaner --chown=piaf:piaf /piaf /piaf
 
-ENV DEBUG="True"
+ENV DEBUG="False"
 ENV SECRET_KEY="change-me-in-production"
 ENV PORT="8000"
 ENV WORKERS="2"
