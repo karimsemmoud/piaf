@@ -8,13 +8,13 @@
     "success_url": "/",
     "env": {
         "ADMIN_USER_NAME": {
-            "description": "The user name for the admin account."
+            "description": "admin"
         },
         "ADMIN_CONTACT_EMAIL": {
-            "description": "The contact email address for the admin account."
+            "description": "karim@semmoud.com"
         },
         "ADMIN_PASSWORD": {
-            "description": "The password for the admin account."
+            "description": "password"
         },
         "SECRET_KEY": {
             "description": "The value to use as the Django secret key.",
