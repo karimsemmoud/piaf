@@ -17,7 +17,7 @@
             "description": "password"
         },
         "SECRET_KEY": {
-            "description": "The value to use as the Django secret key.",
+            "description": "change-me-in-production",
             "generator": "secret"
         },
         "MATOMO_SITE_ID": {
